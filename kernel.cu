@@ -7,7 +7,7 @@
 
 #define max 20
 #define min 0
-#define dato 5
+#define dato 10
 
 using namespace std;
 

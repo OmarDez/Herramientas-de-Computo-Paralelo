@@ -5,11 +5,6 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CUDA", "busqueda_bin.vcxproj", "{5EA8DD63-FF34-472A-ACE4-88DB201DC232}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Busqueda", "Busqueda", "{CEF06C90-9E0A-4201-A9DB-D4DDB5380E28}"
-	ProjectSection(SolutionItems) = preProject
-		kernel.cu = kernel.cu
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
