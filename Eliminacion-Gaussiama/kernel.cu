@@ -21,7 +21,7 @@ int main()
 	int i, j, k, n; // declare variables and matrixes as input
 	float a[10][10], b, x[10];
 	printf("\nEnter the size of matrix: ");
-	scanf("%d", &n);
+	cin >> n;
 	printf("\nEnter the elements of augmented matrix (rowwise):\ n");
 	for (i = 1; i <= n; i++) {
 		for (j = 1; j <= (n + 1); j++) {
