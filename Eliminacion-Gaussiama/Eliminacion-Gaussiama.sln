@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Eliminacion-Gaussiama", "Eliminacion-Gaussiama.vcxproj", "{078C4ACB-E83E-4669-8B93-A3E61F662428}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{078C4ACB-E83E-4669-8B93-A3E61F662428}.Debug|x64.ActiveCfg = Debug|x64
+		{078C4ACB-E83E-4669-8B93-A3E61F662428}.Debug|x64.Build.0 = Debug|x64
+		{078C4ACB-E83E-4669-8B93-A3E61F662428}.Release|x64.ActiveCfg = Release|x64
+		{078C4ACB-E83E-4669-8B93-A3E61F662428}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A08EE7E8-090C-4C38-8987-348C86A496FA}
+	EndGlobalSection
+EndGlobal
