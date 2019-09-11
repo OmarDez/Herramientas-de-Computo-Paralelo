@@ -13,6 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5EA8DD63-FF34-472A-ACE4-88DB201DC232}</ProjectGuid>
     <RootNamespace>busqueda_bin</RootNamespace>
+    <ProjectName>CUDA</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">

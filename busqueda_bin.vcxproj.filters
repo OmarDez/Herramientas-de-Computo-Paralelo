@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Busqueda">
+      <UniqueIdentifier>{198b24e8-a6b0-4503-bb26-f37740204009}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="kernel.cu">
+      <Filter>Busqueda</Filter>
+    </CudaCompile>
+  </ItemGroup>
+</Project>
