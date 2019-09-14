@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include <stdio.h>
-#include <stdlib.h>
+#include <cstdlib>
+#include <ctime>
 
 #define max 20
 #define min 0
@@ -37,6 +38,8 @@ int main()
 	*x = dato;
 
 	cout << "Busqueda Binaria" << endl << "Dato: " << *x << endl << "Datos:\t";
+
+	srand(time(0));
 
 	for (int i = min; i < max; i++)
 		* (a + i) = rand()%20;
