@@ -2,8 +2,9 @@
 #include<cuda.h>
 #include<cuda_runtime.h>
 #include<device_launch_parameters.h>
+#include<math.h>
 
-#include "Utilities.cuh"
+
 
 #define BLOCKSIZE_x 16
 #define BLOCKSIZE_y 16
@@ -22,7 +23,9 @@ __global__ void test_kernel_2D(float *devPtr, size_t pitch)
 	if ((tidx < Ncols) && (tidy < Nrows))
 	{
 		float *row_a = (float *)((char*)devPtr + tidy * pitch);
-		row_a[tidx] = row_a[tidx] * tidx * tidy;
+		printf("%f \n", row_a[tidx]);
+		row_a[tidx] = 9;//row_a[tidx] * tidx * tidy;
+		
 	}
 }
 
@@ -37,22 +40,22 @@ int main()
 
 	for (int i = 0; i < Nrows; i++)
 		for (int j = 0; j < Ncols; j++) {
-			hostPtr[i][j] = 1.f;
+			hostPtr[i][j] = 5.f;
 			//printf("row %i column %i value %f \n", i, j, hostPtr[i][j]);
 		}
 
 	// --- 2D pitched allocation and host->device memcopy
-	gpuErrchk(cudaMallocPitch(&devPtr, &pitch, Ncols * sizeof(float), Nrows));
-	gpuErrchk(cudaMemcpy2D(devPtr, pitch, hostPtr, Ncols*sizeof(float), Ncols*sizeof(float), Nrows, cudaMemcpyHostToDevice));
+	cudaMallocPitch(&devPtr, &pitch, Ncols * sizeof(float), Nrows);
+	cudaMemcpy2D(devPtr, pitch, hostPtr, Ncols*sizeof(float), Ncols*sizeof(float), Nrows, cudaMemcpyHostToDevice);
 
-	dim3 gridSize(iDivUp(Ncols, BLOCKSIZE_x), iDivUp(Nrows, BLOCKSIZE_y));
+	dim3 gridSize(1, 1);
 	dim3 blockSize(BLOCKSIZE_y, BLOCKSIZE_x);
 
 	test_kernel_2D << <gridSize, blockSize >> >(devPtr, pitch);
-	gpuErrchk(cudaPeekAtLastError());
-	gpuErrchk(cudaDeviceSynchronize());
+	cudaPeekAtLastError();
+	cudaDeviceSynchronize();
 
-	gpuErrchk(cudaMemcpy2D(hostPtr, Ncols * sizeof(float), devPtr, pitch, Ncols * sizeof(float), Nrows, cudaMemcpyDeviceToHost));
+	cudaMemcpy2D(hostPtr, Ncols * sizeof(float), devPtr, pitch, Ncols * sizeof(float), Nrows, cudaMemcpyDeviceToHost);
 
 	for (int i = 0; i < Nrows; i++) 
 		for (int j = 0; j < Ncols; j++) 
