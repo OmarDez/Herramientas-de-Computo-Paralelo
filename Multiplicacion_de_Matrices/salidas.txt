@@ -1,0 +1,150 @@
+Tiempo de computo en n^2 threads para una matriz de 1: 0.139328ms
+Tiempo de computo en secuencia para una matriz de 1: 0.01424ms
+
+Tiempo de computo en n^2 threads para una matriz de 2: 0.018208ms
+Tiempo de computo en secuencia para una matriz de 2: 0.045856ms
+
+Tiempo de computo en n^2 threads para una matriz de 3: 0.020672ms
+Tiempo de computo en secuencia para una matriz de 3: 0.132736ms
+
+Tiempo de computo en n^2 threads para una matriz de 4: 0.02448ms
+Tiempo de computo en secuencia para una matriz de 4: 0.300256ms
+
+Tiempo de computo en n^2 threads para una matriz de 5: 0.029344ms
+Tiempo de computo en secuencia para una matriz de 5: 0.579008ms
+
+Tiempo de computo en n^2 threads para una matriz de 6: 0.027296ms
+Tiempo de computo en secuencia para una matriz de 6: 0.98944ms
+
+Tiempo de computo en n^2 threads para una matriz de 7: 0.03488ms
+Tiempo de computo en secuencia para una matriz de 7: 1.56944ms
+
+Tiempo de computo en n^2 threads para una matriz de 8: 0.032512ms
+Tiempo de computo en secuencia para una matriz de 8: 2.32909ms
+
+Tiempo de computo en n^2 threads para una matriz de 9: 0.036896ms
+Tiempo de computo en secuencia para una matriz de 9: 3.30602ms
+
+Tiempo de computo en n^2 threads para una matriz de 10: 0.040928ms
+Tiempo de computo en secuencia para una matriz de 10: 4.53322ms
+
+Tiempo de computo en n^2 threads para una matriz de 11: 0.041536ms
+Tiempo de computo en secuencia para una matriz de 11: 6.02387ms
+
+Tiempo de computo en n^2 threads para una matriz de 12: 0.048064ms
+Tiempo de computo en secuencia para una matriz de 12: 7.80176ms
+
+Tiempo de computo en n^2 threads para una matriz de 13: 0.048032ms
+Tiempo de computo en secuencia para una matriz de 13: 9.92803ms
+
+Tiempo de computo en n^2 threads para una matriz de 14: 0.048192ms
+Tiempo de computo en secuencia para una matriz de 14: 12.396ms
+
+Tiempo de computo en n^2 threads para una matriz de 15: 0.053568ms
+Tiempo de computo en secuencia para una matriz de 15: 15.3072ms
+
+Tiempo de computo en n^2 threads para una matriz de 16: 0.058304ms
+Tiempo de computo en secuencia para una matriz de 16: 18.5444ms
+
+Tiempo de computo en n^2 threads para una matriz de 17: 0.054016ms
+Tiempo de computo en secuencia para una matriz de 17: 22.3281ms
+
+Tiempo de computo en n^2 threads para una matriz de 18: 0.059776ms
+Tiempo de computo en secuencia para una matriz de 18: 26.9912ms
+
+Tiempo de computo en n^2 threads para una matriz de 19: 0.070304ms
+Tiempo de computo en secuencia para una matriz de 19: 31.5914ms
+
+Tiempo de computo en n^2 threads para una matriz de 20: 0.077216ms
+Tiempo de computo en secuencia para una matriz de 20: 36.2479ms
+
+Tiempo de computo en n^2 threads para una matriz de 21: 0.063808ms
+Tiempo de computo en secuencia para una matriz de 21: 42.0239ms
+
+Tiempo de computo en n^2 threads para una matriz de 22: 0.065856ms
+Tiempo de computo en secuencia para una matriz de 22: 48.1511ms
+
+Tiempo de computo en n^2 threads para una matriz de 23: 0.067264ms
+Tiempo de computo en secuencia para una matriz de 23: 55.7098ms
+
+Tiempo de computo en n^2 threads para una matriz de 24: 0.08832ms
+Tiempo de computo en secuencia para una matriz de 24: 62.9295ms
+
+Tiempo de computo en n^2 threads para una matriz de 25: 0.101408ms
+Tiempo de computo en secuencia para una matriz de 25: 70.938ms
+
+Tiempo de computo en n^2 threads para una matriz de 26: 0.074112ms
+Tiempo de computo en secuencia para una matriz de 26: 80.1853ms
+
+Tiempo de computo en n^2 threads para una matriz de 27: 0.108416ms
+Tiempo de computo en secuencia para una matriz de 27: 89.2203ms
+
+Tiempo de computo en n^2 threads para una matriz de 28: 0.119424ms
+Tiempo de computo en secuencia para una matriz de 28: 99.7617ms
+
+Tiempo de computo en n^2 threads para una matriz de 29: 0.110944ms
+Tiempo de computo en secuencia para una matriz de 29: 110.582ms
+
+Tiempo de computo en n^2 threads para una matriz de 30: 0.087168ms
+Tiempo de computo en secuencia para una matriz de 30: 122.809ms
+
+Tiempo de computo en n^2 threads para una matriz de 31: 0.100704ms
+Tiempo de computo en secuencia para una matriz de 31: 135.283ms
+
+Tiempo de computo en n^2 threads para una matriz de 32: 0.12912ms
+Tiempo de computo en secuencia para una matriz de 32: 148.921ms
+
+Tiempo de computo en n^2 threads para una matriz de 33: 0.09936ms
+Tiempo de computo en secuencia para una matriz de 33: 162.36ms
+
+Tiempo de computo en n^2 threads para una matriz de 34: 0.105568ms
+Tiempo de computo en secuencia para una matriz de 34: 177.513ms
+
+Tiempo de computo en n^2 threads para una matriz de 35: 0.101152ms
+Tiempo de computo en secuencia para una matriz de 35: 194.592ms
+
+Tiempo de computo en n^2 threads para una matriz de 36: 0.119104ms
+Tiempo de computo en secuencia para una matriz de 36: 210.478ms
+
+Tiempo de computo en n^2 threads para una matriz de 37: 0.148672ms
+Tiempo de computo en secuencia para una matriz de 37: 229.157ms
+
+Tiempo de computo en n^2 threads para una matriz de 38: 0.118784ms
+Tiempo de computo en secuencia para una matriz de 38: 248.662ms
+
+Tiempo de computo en n^2 threads para una matriz de 39: 0.144096ms
+Tiempo de computo en secuencia para una matriz de 39: 268.663ms
+
+Tiempo de computo en n^2 threads para una matriz de 40: 0.135264ms
+Tiempo de computo en secuencia para una matriz de 40: 288.699ms
+
+Tiempo de computo en n^2 threads para una matriz de 41: 0.133344ms
+Tiempo de computo en secuencia para una matriz de 41: 312.622ms
+
+Tiempo de computo en n^2 threads para una matriz de 42: 0.135328ms
+Tiempo de computo en secuencia para una matriz de 42: 335.733ms
+
+Tiempo de computo en n^2 threads para una matriz de 43: 0.14ms
+Tiempo de computo en secuencia para una matriz de 43: 359.486ms
+
+Tiempo de computo en n^2 threads para una matriz de 44: 0.1432ms
+Tiempo de computo en secuencia para una matriz de 44: 384.674ms
+
+Tiempo de computo en n^2 threads para una matriz de 45: 0.144864ms
+Tiempo de computo en secuencia para una matriz de 45: 412.87ms
+
+Tiempo de computo en n^2 threads para una matriz de 46: 0.147712ms
+Tiempo de computo en secuencia para una matriz de 46: 439.222ms
+
+Tiempo de computo en n^2 threads para una matriz de 47: 0.148992ms
+Tiempo de computo en secuencia para una matriz de 47: 468.718ms
+
+Tiempo de computo en n^2 threads para una matriz de 48: 0.148544ms
+Tiempo de computo en secuencia para una matriz de 48: 500.492ms
+
+Tiempo de computo en n^2 threads para una matriz de 49: 0.166816ms
+Tiempo de computo en secuencia para una matriz de 49: 533.016ms
+
+Tiempo de computo en n^2 threads para una matriz de 50: 0.164ms
+Tiempo de computo en secuencia para una matriz de 50: 564.031ms
+
