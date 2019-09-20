@@ -80,8 +80,8 @@ int main(){
     cudaMemcpy2D(matriz1_GPU, pitch, matriz1_host, TDM * sizeof(float), TDM * sizeof(float), TDM, cudaMemcpyHostToDevice);
     cudaMemcpy2D(matriz2_GPU, pitch, matriz2_host, TDM * sizeof(float), TDM * sizeof(float), TDM, cudaMemcpyHostToDevice);
 
-    cudaEvent_t inicio, alto; 
-    float tiempo_computo; 
+    cudaEvent_t inicio, alto; //Variables para el control de los eventos
+    float tiempo_computo; // Varibale para almacenar el tiempo trancurrido (ms)
 
     for(TDM2 = 1; TDM2 <= TDM; TDM2++){
         
@@ -89,13 +89,13 @@ int main(){
         numero_bloques =  ceil( (float) NDH / (float) TDM2);// Tamño de la matriz (cuadrada)TDM ); 
         hilos_bloque = ceil( (float) NDH / (float) numero_bloques);// Tamño de la matriz (cuadrada)ero_bloques );
         tiempo_computo = 0; 
-        cudaEventCreate(&inicio); cudaEventCreate(&alto);
-        cudaEventRecord(inicio);
+        cudaEventCreate(&inicio); cudaEventCreate(&alto); //Creamos los eventos
+        cudaEventRecord(inicio); //Creamos una marca temporal, una especia de bandera 
         MultiplicarMatricesOn<<<numero_bloques, hilos_bloque>>>(matriz1_GPU, matriz2_GPU, matriz3_GPU, TDM2,  pitch);
-        cudaEventRecord(alto);
-        cudaEventSynchronize(alto);
-        cudaEventElapsedTime(&tiempo_computo, inicio, alto);
-        cudaEventDestroy(inicio); cudaEventDestroy(alto);
+        cudaEventRecord(alto); // Creamos una marca temporal, otra bandera
+        cudaEventSynchronize(alto); // Bloquea la CPU para evitar que se continue con el programa hasta que se completen los eventos
+        cudaEventElapsedTime(&tiempo_computo, inicio, alto); //Calcula el tiempo entre los eventos
+        cudaEventDestroy(inicio); cudaEventDestroy(alto); // Se liberan los espacios  de los eventos para poder medir de nuevo más tarde
 
         cout << "Tiempo de computo en n^2 threads para una matriz de "<< TDM2 << ": "<<tiempo_computo << "ms"<<endl;
 
