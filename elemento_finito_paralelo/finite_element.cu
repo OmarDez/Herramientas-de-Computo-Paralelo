@@ -5,36 +5,36 @@
 /*Finite Element Library*/
 #include "finite_element.h"
 #define MTPB 512 //Threads allow per block (CUDA toolkit 10 allows 1024)
-#define sideMatrix 10
+
 /*Finite Element Solution to Example*/
 
 /*Linear Solver*/
 
     // this kernel will Parallely solves the tridiagonal sysytem
 	__global__ 
-	void pcr(float* a_s, float* b_s, float* c_s, float* d1, int k)// k = ceil(log_2(n))
+	void pcr(float* a_s, float* b_s, float* c_s, float* d1, int k, int n)// k = ceil(log_2(n))
            {
     // i is the equation number
 		int i = threadIdx.x + (blockDim.x *  blockIdx.x);
 		
-
     // allocating memory in the shared memory for lower diag, diag, upper diag and right hand vector  
-            __shared__ float a[sideMatrix];
-            __shared__ float b[sideMatrix];
-            __shared__ float c[sideMatrix];
-			__shared__ float d[sideMatrix];
-		
+	extern __shared__ float memorySize[];
+	
+	float* a = memorySize;	
+	float* b = (float*)&a[n];
+	float* c = (float*)&b[n];
+	float* d = (float*)&c[n];	
+
     // initialize the coffecient arrys from the globally define tridiagonal matrix       
 			if(i == 0)
 				a[i] = 0;
-			else if(i == sideMatrix - 1)
+			else if(i == n - 1)
 				a[i] = 0;
 			else	
 				a[i] = a_s[i-1];
             b[i] = b_s[i];
             c[i] = c_s[i];
             d[i] = d1[i];
-
     // waiting for every thread to finish above initialization
             __syncthreads();
 			
@@ -42,7 +42,10 @@
             float alfa, beta, a1, c1, d2, a2, c2, d3;
             for(int j = 0; j<k ; j++) // k = ceil(log_2(n))
              {
-
+				extern __shared__ float b_memorySize[];
+				extern __shared__ float c_memorySize[];
+				extern __shared__ float d_memorySize[];
+			
     // claculating upper(p) and lower(q) equation numbers for each step by the current equation 
                int p = i - powf(2, j);
                int q = i + powf(2, j);
@@ -62,7 +65,7 @@
                  d2  = 0;
                  }
 
-              if(q<=sideMatrix-1)
+              if(q<=n-1)
                  { 
                  beta = -c[i]/b[q];
                  a2   = beta * a[q];
@@ -134,24 +137,25 @@ void calculate_FE_sol (float* x, float* U, int N) {
 
 	b[0] = 0;
 	b[N - 1] = 0;
-
+	/*
 	std::cout << std::endl << "A:";
 	printM(A, N, N);
 	std::cout << std::endl << "B:" << std::endl;
 	for (int i = 0; i < N; i++)
 		std::cout << b[i] << "\t";
 	std::cout << std::endl;
-
+	*/
 	/*Store linear solver values in an array*/
 	float* xa = new float [N];
 	
 	xa = linearSolver(A, b, N, N);
 	//std::cout.precision(2);
+	/*
 	std::cout << std::endl << "U:";
 	std::cout << std::endl;
 	for (int i = 0; i < N; i++)
 		std::cout << xa[i] << "\t";
-	std::cout << std::endl;
+	std::cout << std::endl;*/
 }
 
 float* linearSolver(float** A, float* d, int cols, int rows) {
@@ -172,6 +176,12 @@ float* linearSolver(float** A, float* d, int cols, int rows) {
 
 	float *a_device, *b_device, *c_device, *d_device; //Space to store on GPU
 	float* x_host = new float[cols]; //Space to store solutions on host
+	//Set time variables
+	float tiempo_computo;
+	cudaEvent_t inicio, alto;
+	//Create temporal events
+	cudaEventCreate(&inicio); cudaEventCreate(&alto); //Creamos los eventos
+    cudaEventRecord(inicio); //Creamos una marca temporal, una especia de bandera 
 
 	int k = ceil(log2f((float)cols)); //Number of steps on the linear solver
 	const int NB = ceil( (float) cols/ (float)MTPB); //Number of blocks
@@ -181,6 +191,7 @@ float* linearSolver(float** A, float* d, int cols, int rows) {
 	cudaMalloc((float**)&b_device,  cols* sizeof(float*));
 	cudaMalloc((float**)&c_device, (cols -1) * sizeof(float*));
 	cudaMalloc((float**)&d_device, 	cols * sizeof(float*));
+	unsigned sharedMemorySize = 4 * cols * sizeof(float);
 
 	//Copy data from host to device
 	cudaMemcpy(a_device, 	a, 		(cols - 1) * sizeof(float*),  	cudaMemcpyHostToDevice);
@@ -190,13 +201,20 @@ float* linearSolver(float** A, float* d, int cols, int rows) {
 
 	/*PCR linear ec.*/
 
-	pcr<<<NB, TPB>>>(a_device, b_device, c_device, d_device, k);
+	pcr<<<NB, TPB, sharedMemorySize>>>(a_device, b_device, c_device, d_device, k, cols);
 
 	//Copy data from device to host
 	cudaMemcpy(x_host, d_device, cols * sizeof(float), cudaMemcpyDeviceToHost);
 
 	//Free device memory
 	cudaFree(a_device); cudaFree(b_device); cudaFree(c_device); cudaFree(d_device);
+
+	cudaEventRecord(alto); // Creamos una marca temporal, otra bandera
+	cudaEventSynchronize(alto); // Bloquea la CPU para evitar que se continue con el programa hasta que se completen los eventos
+	cudaEventElapsedTime(&tiempo_computo, inicio, alto); //Calcula el tiempo entre los eventos
+	cudaEventDestroy(inicio); cudaEventDestroy(alto); // Se liberan los espacios  de los eventos para poder medir de nuevo más tarde
+
+	std::cout << tiempo_computo << "\n";
 
  	return x_host;
 }

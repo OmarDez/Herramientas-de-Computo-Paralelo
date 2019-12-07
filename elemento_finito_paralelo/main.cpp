@@ -1,16 +1,22 @@
 
 #include <iostream>
 #include <stdio.h>
-#define sideMatrixSide 10
 /*Finite Element Library*/
 #include "finite_element.h"
 
-int main(void) {
+void times(int i) {
 
 	float* x = new float[50];
 	float* U = new float[50];
-	int N = sideMatrixSide;
+	int N = i;
 	calculate_FE_sol(x, U, N);
-
-	return 0;
 }
+
+int main(){
+	for (int i = 10; i < 2300; i+=100)
+	{
+		times(i);
+	}
+	
+}
+
