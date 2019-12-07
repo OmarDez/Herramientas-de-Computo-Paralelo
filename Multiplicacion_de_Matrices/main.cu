@@ -124,7 +124,9 @@ int main(){
     }
     //free(matriz1_host); free(matriz2_host);*/
     cudaFree(matriz1_GPU); cudaFree(matriz2_GPU), cudaFree(matriz3_GPU);
-
+	
+	cudaMemcpy(a_device, 	a, 		(cols - 1) * sizeof(float), cudaMemcpyHostToDevice);
+	cudaMemcpy(b_device, 	b, 		cols * sizeof(float), cuda
     
 
     return 0;
